@@ -1,5 +1,5 @@
 #Etapa 1: Compilação
-FROM maven:3.9-eclipse-temurin-17 AS buid 
+FROM maven:3.9.16-eclipse-temurin-17 AS buid 
 WORKDIR /app
 COPY ..
 RUN mvn clean package -DskipTests
