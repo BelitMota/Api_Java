@@ -13,7 +13,7 @@ ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=60.0 -XX:TieredStopAtLevel=1"
 COPY .mvn .mvn
 COPY mvnw mvnw
 COPY pom.xml pom.xml
-COPY /src /src
+COPY src /src
 
 # Garante a permissão e compila gerando o .jar (pulando os testes para poupar RAM)
 RUN chmod +x mvnw && ./mvnw clean package -DskipTests
