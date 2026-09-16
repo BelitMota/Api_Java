@@ -1,7 +1,7 @@
 # ========================================================
 # ETAPA 1: BUILD (Compilação usando o JDK)
 # ========================================================
-FROM eclipse-temurin:21-jdk-alpine AS build
+FROM eclipse-temurin:26-jdk-alpine AS build
 
 # Define diretório de trabalho
 WORKDIR /app
@@ -21,7 +21,7 @@ RUN chmod +x mvnw && ./mvnw clean package -DskipTests
 # ========================================================
 # ETAPA 2: RUN (Execução super leve usando apenas o JRE)
 # ========================================================
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:26-jre-alpine
 
 # Define diretório de trabalho
 WORKDIR /app
