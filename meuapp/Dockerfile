@@ -1,13 +1,13 @@
 # ========================================================
 # ETAPA 1: BUILD (Compilação usando o JDK)
 # ========================================================
-FROM eclipse-temurin:26-jdk-alpine AS build
+FROM maven:3.9-eclipse-temurin-26 AS build
 
 # Define diretório de trabalho
 WORKDIR /app
 
 # Aplica as regras econômicas de memória já na fase de compilação
-ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=60.0 -XX:TieredStopAtLevel=1"
+# ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=60.0 -XX:TieredStopAtLevel=1"
 
 # Copia os arquivos de configuração do Maven e o código fonte do seu PC
 # COPY .mvn .mvn
@@ -17,7 +17,7 @@ ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=60.0 -XX:TieredStopAtLevel=1"
 COPY . .
 
 # Garante a permissão e compila gerando o .jar (pulando os testes para poupar RAM)
-RUN chmod +x mvnw && ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # ========================================================
 # ETAPA 2: RUN (Execução super leve usando apenas o JRE)
