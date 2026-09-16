@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class NovocontainerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MeuappApplication.class, args);
+		SpringApplication.run(NovocontainerApplication.class, args);
 	}
 
 }
